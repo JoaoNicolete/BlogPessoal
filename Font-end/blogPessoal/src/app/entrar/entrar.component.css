@@ -1,0 +1,8 @@
+#img-bg{
+	background-image: url('https://am24.akamaized.net/tms/cnt/uploads/2017/07/shutterstock_562810600.jpg');
+
+	min-height: 695px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

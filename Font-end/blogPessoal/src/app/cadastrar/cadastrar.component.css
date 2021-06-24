@@ -1,0 +1,8 @@
+#img-bg{
+	background-image: url('https://media.them.us/photos/5bd3399acf27fc0011e38206/16:9/w_1280,c_limit/GettyImages-474605425.jpg');
+
+	min-height: 695px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
