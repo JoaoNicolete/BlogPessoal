@@ -6,38 +6,48 @@ import { User } from '../model/User';
 import { UserLogin } from '../model/UserLogin';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(
-    private http: HttpClient
-  ){}
+  constructor(private http: HttpClient) {}
 
   entrar(userLogin: UserLogin): Observable<UserLogin> {
-
-    return this.http.post<UserLogin>('https://blognicolete.herokuapp.com/usuarios/logar', userLogin)
-
+    return this.http.post<UserLogin>(
+      'https://blognicolete.herokuapp.com/usuarios/logar',
+      userLogin
+    );
   }
 
-  cadastrar(user: User): Observable<User>{
-    return this.http.post<User>('https://blognicolete.herokuapp.com/usuarios/cadastrar', user)
+  cadastrar(user: User): Observable<User> {
+    return this.http.post<User>(
+      'https://blognicolete.herokuapp.com/usuarios/cadastrar',
+      user
+    );
   }
 
-  geByIdUser(id: number): Observable<User>{
-    return this.http.get<User>(`https://blognicolete.herokuapp.com/usuarios/${id}`)
+  geByIdUser(id: number): Observable<User> {
+    return this.http.get<User>(
+      `https://blognicolete.herokuapp.com/usuarios/${id}`
+    );
   }
 
-  logado(){
-    let ok = false
+  logado() {
+    let ok = false;
 
-    if (environment.token != ''){
-      ok = true
+    if (environment.token != '') {
+      ok = true;
     }
 
-    return ok
-
+    return ok;
   }
 
+  adm() {
+    let ok = false;
 
+    if (environment.tipo == 'adm') {
+      ok = true;
+    }
+
+    return ok;
+  }
 }

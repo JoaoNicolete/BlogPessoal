@@ -84,7 +84,7 @@
       aria-labelledby="nav-todasPostagens-tab"
     >
       <div class="card-columns">
-        <div class="card text-center" *ngFor="let post of listaPostagens">
+        <div class="card text-center" *ngFor="let post of listaPostagens | orderBy : key : reverse">
           <div class="card-body">
             <h5 class="card-title m-0">{{ post.titulo }}</h5>
             <small class="text-muted"> Tema: {{ post.tema.descricao }}</small>
@@ -110,7 +110,8 @@
       aria-labelledby="minhasPostagens-tab"
     >
       <div class="card-columns">
-        <div class="card text-center" *ngFor="let post of user.postagem">
+        <div class="card text-center" 
+        *ngFor='let post of user.postagem | orderBy : key : reverse' >
           <div class="card-body">
             <h5 class="card-title m-0">{{ post.titulo }}</h5>
             <small class="text-muted"> Tema: {{ post.tema.descricao }}</small>
@@ -134,9 +135,18 @@
       role="tabpanel"
       aria-labelledby="postagensTema-tab"
     >
-      <div class="card-columns" *ngFor="let tema of listaTemas">
+
+    <div class="row d-flex justify-content-center mt-5 mb-5">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="text" class="form-control" id="nome" placeholder="Digite um tema para pesquisar" [(ngModel)]='nomeTema' (keyup)='findByNomeTema()'>
+        </div>
+      </div>
+    </div>
+
+      <div class="card-columns" *ngFor="let tema of listaTemas | orderBy : key : reverse">
         <h5>{{ tema.descricao }}</h5>
-        <div class="card text-center" *ngFor="let post of tema.postagem">
+        <div class="card text-center" *ngFor="let post of tema.postagem | orderBy : key : reverse">
           <div class="card-body">
             <h5 class="card-title m-0">{{ post.titulo }}</h5>
             <p class="card-text mt-3">{{ post.texto }}</p>
